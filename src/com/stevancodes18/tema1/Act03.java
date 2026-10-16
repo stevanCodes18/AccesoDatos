@@ -1,9 +1,9 @@
-package com.StevanCodes18.Tema1;
+package com.stevancodes18.tema1;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class act03 {
+public class Act03 {
     void main(){
         Path ruta = Path.of("/home/iamstevan/prueba");
 //el metodo toFile() lo utilizo para convertir un objeto de tipo Path en uno de tipo file

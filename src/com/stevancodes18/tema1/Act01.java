@@ -1,9 +1,9 @@
-package com.StevanCodes18.Tema1;
+package com.stevancodes18.tema1;
 
 import java.io.File;
 
 /*la carpeta donde que utilizare sera /home/iamstevan/prueba */
-public class act01 {
+public class Act01 {
     void main(){
         File dir = new File("/home/iamstevan/prueba");
         if(dir.exists() && dir.isDirectory()) {

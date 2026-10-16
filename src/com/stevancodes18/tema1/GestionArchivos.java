@@ -1,4 +1,4 @@
-package com.StevanCodes18.Tema1;
+package com.stevancodes18.tema1;
 
 import java.io.*;
 import java.nio.file.FileAlreadyExistsException;

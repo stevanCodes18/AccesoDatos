@@ -1,11 +1,11 @@
-package com.StevanCodes18.Tema1;
+package com.stevancodes18.tema1;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
 
-public class act02 {
+public class Act02 {
     void main(){
         Path rutaD=Path.of("/home/iamstevan/prueba");
 

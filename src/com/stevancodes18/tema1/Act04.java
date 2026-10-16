@@ -1,13 +1,12 @@
-package com.StevanCodes18.Tema1;
+package com.stevancodes18.tema1;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-public class act04 {
+public class Act04 {
     void main(){
         Path file = Path.of("/home/iamstevan/prueba/hola.txt");
 
