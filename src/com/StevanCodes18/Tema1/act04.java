@@ -1,4 +1,4 @@
-package Tema1;
+package com.StevanCodes18.Tema1;
 
 import java.io.File;
 import java.io.IOException;
