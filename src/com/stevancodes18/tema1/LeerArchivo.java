@@ -10,7 +10,7 @@ public class LeerArchivo {
    public static void main(String[] args) {
       if(args.length < 1){
          System.out.println("Error: debes indicar la ruta del archivo");
-         return;
+         System.exit(1);
       }
 
       String rutaArchivo=args[0];

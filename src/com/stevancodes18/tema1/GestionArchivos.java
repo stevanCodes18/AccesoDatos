@@ -86,15 +86,16 @@ public class GestionArchivos {
 //7
     public  void verContenido(String directorio, String archivo) {
         File elemento = new File(directorio, archivo);
-
+        // Validar que el archivo existe y es un fichero
         if (!elemento.exists() || !elemento.isFile()) {
             System.out.println("El archivo no existe o no es un contenido");
             return;
         }
-
+// Lectura del archivo binario byte por byte
         try (InputStream bis = new FileInputStream(elemento)) {
             int caracter;
             while ((caracter = bis.read()) != -1) {
+                // %02x formatea el entero como hexadecimal en minúsculas padded a 2 dígitos
                 System.out.printf("%02x", caracter);
             }
             System.out.println();
@@ -107,16 +108,16 @@ public class GestionArchivos {
     public  boolean compararArchivo(String ruta1, String ruta2) {
         File f1=new  File(ruta1);
         File f2=new  File(ruta2);
-
+// 1. Validar que ambos archivos existan y sean ficheros regulares
         if (!f1.exists() || !f2.exists() || !f1.isFile() || !f2.isFile()) {
             System.out.println("Error: uno o ambos archivos no existen o no son ficheros");
             return false;
         }
-
+// 2. Optimización rápida: Si difieren en tamaño, son distintos inmediatamente
         if (f1.length() != f2.length()) {
             return false;
         }
-
+// 3. Comparación binaria byte a byte usando BufferedInputStream para mayor rendimiento
         try(
                 InputStream is1=new BufferedInputStream(new FileInputStream(f1));
                 InputStream is2=new BufferedInputStream(new FileInputStream(f2))
@@ -124,11 +125,12 @@ public class GestionArchivos {
             int byte1, byte2;
             while ((byte1 = is1.read()) != -1) {
                 byte2 = is2.read();
-
+// Si encontramos un byte diferente, los archivos no son iguales
                 if (byte1 != byte2) {
                     return false;
                 }
             }
+            // Si terminó de recorrer todo el archivo sin diferencias, son iguales
             return true;
 
         }catch (IOException ioe){
@@ -143,7 +145,7 @@ public class GestionArchivos {
         File f1=new  File(archivo1);
         File f2=new  File(archivo2);
         File fDestino=new  File(archivoDestino);
-
+// 1. Comprobar existencia de los archivos de origen
         if(!f1.exists() || !f1.isFile()){
             throw new FileNotFoundException("El archivo no existe o no es un archivo");
         }
@@ -151,10 +153,11 @@ public class GestionArchivos {
         if(!f2.exists() || !f2.isFile()){
             throw new FileNotFoundException("El archivo no existe o no es un archivo");
         }
+        // 2. Comprobar si el archivo de destino ya existe
         if(fDestino.exists()){
             throw new FileAlreadyExistsException("El archivo ya existe: "+archivoDestino);
         }
-
+        // Leer y escribir todo el primer archivo
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fDestino))){
 
             try(BufferedReader br1=new BufferedReader(new FileReader(f1))){
@@ -164,7 +167,7 @@ public class GestionArchivos {
                     bw.newLine();
                 }
             }
-
+            // Leer y escribir todo el segundo archivo
             try(BufferedReader br2= new BufferedReader(new FileReader(f2))){
                 String linea;
                 while((linea = br2.readLine()) !=null){
